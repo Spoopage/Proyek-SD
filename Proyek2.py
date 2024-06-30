@@ -73,6 +73,7 @@ def main():
     trees_per_click = 1
     watering_can_level = 0
     fertilizer_level = 0
+    growth_booster_level = 0
 
     def get_tree_rarity():
         rarity_probabilities = {
@@ -117,9 +118,12 @@ def main():
 
     def get_fertilizer_price(level):
         return 350 + (level * 85)
+    
+    def get_growth_booster_price(level):
+        return 500 + (level * 120)
 
     def buy_item(item):
-        nonlocal trees_per_click, watering_can_level, fertilizer_level
+        nonlocal trees_per_click, watering_can_level, fertilizer_level, growth_booster_level
         if item == "Watering Can":
             price = get_watering_can_price(watering_can_level)
             if tree_list.get_coins() >= price:
@@ -135,6 +139,15 @@ def main():
                 tree_list.coins -= price
                 trees_per_click += 2
                 fertilizer_level += 1
+                messagebox.showinfo("Purchase Successful", f"You bought a {item}!")
+            else:
+                messagebox.showinfo("Purchase Failed", f"Not enough coins to buy a {item}.")
+        elif item == "Growth Booster":
+            price = get_growth_booster_price(growth_booster_level)
+            if tree_list.get_coins() >= price:
+                tree_list.coins -= price
+                trees_per_click += 5
+                growth_booster_level += 1
                 messagebox.showinfo("Purchase Successful", f"You bought a {item}!")
             else:
                 messagebox.showinfo("Purchase Failed", f"Not enough coins to buy a {item}.")
@@ -170,11 +183,17 @@ def main():
     fertilizer_price_label = tk.Label(root, text="Fertilizer price: 350")
     fertilizer_price_label.pack(pady=10)
     
+    growth_booster_price_label = tk.Label(root, text="Growth Booster price: 500")
+    growth_booster_price_label.pack(pady=10)
+    
     buy_watering_can_button = tk.Button(root, text="Buy Watering Can (+1 tree per click)", command=lambda: buy_item("Watering Can"))
     buy_watering_can_button.pack(pady=5)
 
     buy_fertilizer_button = tk.Button(root, text="Buy Fertilizer (+2 trees per click)", command=lambda: buy_item("Fertilizer"))
     buy_fertilizer_button.pack(pady=5)
+    
+    growth_booster_button = tk.Button(root, text="Buy Growth Booster (+5 trees per click)", command=lambda: buy_item("Growth Booster"))
+    growth_booster_button.pack(pady=5)
 
     root.mainloop()
 
