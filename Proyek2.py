@@ -107,6 +107,7 @@ def main():
         coins_label.config(text=f"Coins: {coins}")
         watering_can_price_label.config(text=f"Watering Can price: {get_watering_can_price(watering_can_level)}")
         fertilizer_price_label.config(text=f"Fertilizer price: {get_fertilizer_price(fertilizer_level)}")
+        growth_booster_price_label.config(text=f"Growth Booster price: {get_fertilizer_price(growth_booster_level)}")
 
     def show_trees():
         rarity_count = tree_list.get_rarity_count()
