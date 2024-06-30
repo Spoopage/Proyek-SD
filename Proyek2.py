@@ -30,9 +30,9 @@ class TreeList:
         elif rarity == "Uncommon":
             self.coins += 2
         elif rarity == "Rare":
-            self.coins += 3
+            self.coins += 5
         elif rarity == "Epic":
-            self.coins += 4
+            self.coins += 10
 
     def get_rarity_count(self):
         rarity_count = {"Common": 0, "Uncommon": 0, "Rare": 0, "Epic": 0}
@@ -67,15 +67,6 @@ class TreeList:
 
     def get_coins(self):
         return self.coins
-
-
-
-
-
-
-
-
-
 
 def main():
     tree_list = TreeList()
