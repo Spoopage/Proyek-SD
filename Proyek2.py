@@ -68,6 +68,15 @@ class TreeList:
     def get_coins(self):
         return self.coins
 
+
+
+
+
+
+
+
+
+
 def main():
     tree_list = TreeList()
     trees_per_click = 1
